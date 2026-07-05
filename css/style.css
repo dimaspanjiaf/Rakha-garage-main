@@ -279,32 +279,145 @@ STATS
 ========================= */
 
 .stats{
-display:grid;
+display:flex;
 justify-content:center;
 align-items:center;
-gap:40px;
-padding:80px 10%;
+gap:50px;
+padding:100px;
 background:#111;
 flex-wrap:wrap;
 }
 
 .stat-box{
+width :330px;
+min-height:360px;
 text-align:center;
 padding:40px;
 border:1px solid rgba(201,162,39,.2);
-border-radius:15px;
+border-radius:20px;
 transition:.4s;
+background:#141414;
+position:relative;
+overflow:visible;
+padding-top:70px;
 }
+.car-icon{
 
+    font-size:60px;
+
+    transform:translateX(-350px);
+
+    opacity:0;
+
+}
 .stat-box:hover{
 transform:translateY(-8px);
 border-color:var(--gold);
 }
 
 .stat-box h2{
-color:var(--gold);
-font-size:2.5rem;
+color:#C9A227;
+font-size:3rem;
 margin-bottom:10px;
+margin-top:20px;
+opacity:0;
+transform:translateY(50px);
+}
+.stat-box p{
+
+    opacity:0;
+
+    transform:translateY(20px);
+
+}
+
+.car-icon.show{
+
+    animation:carMove 1.3s ease forwards;
+
+}
+
+.stat-box h2.show{
+
+    animation:fadeNumber .8s ease forwards;
+
+    animation-delay:1.1s;
+
+}
+
+.stat-box p.show{
+
+    animation:fadeNumber .8s ease forwards;
+
+    animation-delay:1.4s;
+
+}
+.car-icon{
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    margin-bottom:20px;
+
+    transform:translateX(-350px);
+    opacity:0;
+}
+
+.car-icon img{
+
+    width:180px;
+    height:auto;
+    display:block;
+
+}
+
+@keyframes carMove{
+
+    0%{
+
+        transform:translateX(-320px);
+
+        opacity:0;
+
+    }
+
+    70%{
+
+        transform:translateX(20px);
+
+        opacity:1;
+
+    }
+
+    100%{
+
+        transform:translateX(0);
+
+        opacity:1;
+
+    }
+
+}
+
+@keyframes fadeNumber{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(25px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
 }
 
 /* =========================
@@ -555,7 +668,7 @@ RESPONSIVE
 
 .testimonials{
     padding:120px 10%;
-    background:#0f0f0f;
+    background: #0B0B0B;
 }
 
 .testimonial-container{
@@ -704,29 +817,29 @@ RESPONSIVE
 .sidebar{
 
     position:fixed;
-
     left:0;
     top:0;
 
     width:280px;
     height:100vh;
 
-    background:
-    rgba(10,10,10,.95);
-
-    backdrop-filter:blur(20px);
-
-    border-right:
-    1px solid rgba(201,162,39,.15);
-
-    padding:40px;
-
     display:flex;
     flex-direction:column;
 
-    z-index:9999;
+    padding:40px;
+    background:rgba(10,10,10,.95);
+    backdrop-filter:blur(20px);
 }
+.sidebar .btn-gold{
 
+    margin-top:auto;
+
+    width:100%;
+
+    padding:15px;
+
+    border-radius:12px;
+}
 .hero,
 .stats,
 .collection,

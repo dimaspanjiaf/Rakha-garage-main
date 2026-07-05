@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
 // NAVBAR SCROLL EFFECT
 // ==========================
 
-const navbar = document.querySelector(".navbar");
+const navbar = document.querySelector(".sidebar");
 
 window.addEventListener("scroll", () => {
 
@@ -29,45 +29,7 @@ window.addEventListener("scroll", () => {
 // COUNTER ANIMATION
 // ==========================
 
-const counters = document.querySelectorAll(".stat-box h2");
 
-counters.forEach(counter => {
-
-    const updateCounter = () => {
-
-        const target =
-            parseInt(counter.innerText.replace("+", ""));
-
-        const current =
-            parseInt(counter.getAttribute("data-count")) || 0;
-
-        const increment =
-            Math.ceil(target / 80);
-
-        if (current < target) {
-
-            const newValue = current + increment;
-
-            counter.innerText = newValue + "+";
-
-            counter.setAttribute(
-                "data-count",
-                newValue
-            );
-
-            setTimeout(updateCounter, 30);
-
-        } else {
-
-            counter.innerText = target + "+";
-
-        }
-
-    };
-
-    updateCounter();
-
-});
 
 // ==========================
 // REVEAL ON SCROLL
@@ -104,7 +66,68 @@ window.addEventListener(
 
 revealElements();
 
+const statBoxes = document.querySelectorAll(".stat-box");
 
+const statObserver = new IntersectionObserver((entries) => {
+
+    entries.forEach(entry => {
+
+        if (entry.isIntersecting) {
+
+            const box = entry.target;
+
+            box.querySelector(".car-icon").classList.add("show");
+            box.querySelector("h2").classList.add("show");
+            box.querySelector("p").classList.add("show");
+
+            setTimeout(() => {
+                startCounter(box.querySelector("h2"));
+            }, 1300);
+
+            statObserver.unobserve(box);
+
+        }
+
+    });
+
+}, {
+    threshold: 0.5
+});
+
+statBoxes.forEach(box => {
+    statObserver.observe(box);
+});
+
+function startCounter(counter){
+
+    const target = parseInt(counter.textContent);
+
+    let current = 0;
+
+    const increment = Math.ceil(target / 80);
+
+    const timer = setInterval(() => {
+
+        current += increment;
+
+        if(current >= target){
+
+            current = target;
+            clearInterval(timer);
+
+        }
+
+        counter.textContent = current + "+";
+
+    },20);
+
+}
+
+setTimeout(()=>{
+
+    startCounter(box.querySelector("h2"));
+
+},1300);
 // ==========================
 // SMOOTH SCROLL
 // ==========================
