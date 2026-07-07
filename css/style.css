@@ -851,3 +851,73 @@ footer{
 
     margin-left:280px;
 }
+.persona-header{
+    margin-bottom:20px;
+}
+
+.persona-header h3{
+    color:#C9A227;
+    font-size:1.4rem;
+    margin-bottom:5px;
+}
+
+.persona-header span{
+    color:#aaa;
+    font-size:.95rem;
+}
+
+.persona-info{
+
+    margin:20px 0;
+
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+
+}
+
+.persona-info p{
+
+    background:#151515;
+
+    border-left:3px solid #C9A227;
+
+    padding:12px;
+
+    border-radius:8px;
+
+    color:#ddd;
+
+    line-height:1.6;
+
+    font-size:.95rem;
+
+}
+
+blockquote{
+
+    margin-top:20px;
+
+    font-style:italic;
+
+    color:#f1f1f1;
+
+    border-left:3px solid #C9A227;
+
+    padding-left:15px;
+
+    line-height:1.7;
+
+}
+
+.rating{
+
+    margin-top:20px;
+
+    color:#C9A227;
+
+    font-size:1.2rem;
+
+    letter-spacing:3px;
+
+}
